@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FloraGPT - Your AI-Powered Plant Care Companion</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Dynamic Background Elements -->
+    <div id="parallax-bg" class="parallax-bg">
+        <div class="layer layer-1"></div>
+        <div class="layer layer-2"></div>
+        <div class="layer layer-3"></div>
+        <div class="particles" id="particles"></div>
+        <div class="butterflies" id="butterflies"></div>
+    </div>
+
+    <main class="app-container">
+        <!-- Landing Section -->
+        <header class="hero-section">
+            <div class="logo-container">
+                <i class="fa-solid fa-leaf logo-icon"></i>
+                <h1 class="logo-text">FloraGPT</h1>
+            </div>
+            <h2 class="main-heading">Your AI-Powered Plant Care Companion</h2>
+            <p class="subtitle">Discover the perfect environment, watering schedule, and care routines for any plant.</p>
+            
+            <div class="search-container">
+                <form id="search-form">
+                    <div class="search-box">
+                        <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                        <input type="text" id="plant-input" placeholder="E.g., Monstera Deliciosa, Snake Plant, Basil..." required autocomplete="off">
+                        <button type="submit" class="search-btn">Discover</button>
+                    </div>
+                </form>
+            </div>
+        </header>
+
+        <!-- Loading State -->
+        <div id="loading-state" class="hidden">
+            <div class="growing-plant-animation">
+                <div class="pot"></div>
+                <div class="stem"></div>
+                <div class="leaf leaf-left"></div>
+                <div class="leaf leaf-right"></div>
+            </div>
+            <p class="loading-text">FloraGPT is analyzing plant care data...</p>
+        </div>
+
+        <!-- Surprise Features (Visible before search) -->
+        <section id="surprise-section" class="surprise-features glass-panel">
+            <div class="surprise-card quote-card">
+                <i class="fa-solid fa-quote-left quote-icon"></i>
+                <p id="daily-quote">"To plant a garden is to believe in tomorrow." - Audrey Hepburn</p>
+            </div>
+            <div class="surprise-card fact-card">
+                <h3><i class="fa-solid fa-lightbulb"></i> Plant Fact of the Day</h3>
+                <p id="random-fact">Did you know? Bamboo is the fastest-growing woody plant in the world; it can grow up to 35 inches in a single day!</p>
+            </div>
+        </section>
+
+        <!-- Result Display -->
+        <section id="result-section" class="hidden">
+            <div class="result-header text-center">
+                <h2 id="result-title" class="result-title">Plant Name</h2>
+                <p id="result-overview" class="result-overview">Overview of the plant.</p>
+            </div>
+
+            <div class="cards-grid">
+                <div class="care-card glass-panel" style="--delay: 0.1s">
+                    <div class="card-icon water"><i class="fa-solid fa-droplet"></i></div>
+                    <h3>Watering Guide</h3>
+                    <p id="res-watering">Loading...</p>
+                </div>
+                
+                <div class="care-card glass-panel" style="--delay: 0.2s">
+                    <div class="card-icon sun"><i class="fa-solid fa-sun"></i></div>
+                    <h3>Sunlight Needs</h3>
+                    <p id="res-sunlight">Loading...</p>
+                </div>
+
+                <div class="care-card glass-panel" style="--delay: 0.3s">
+                    <div class="card-icon soil"><i class="fa-solid fa-mound"></i></div>
+                    <h3>Soil Requirements</h3>
+                    <p id="res-soil">Loading...</p>
+                </div>
+
+                <div class="care-card glass-panel" style="--delay: 0.4s">
+                    <div class="card-icon fertilizer"><i class="fa-solid fa-seedling"></i></div>
+                    <h3>Fertilizer</h3>
+                    <p id="res-fertilizer">Loading...</p>
+                </div>
+
+                <div class="care-card glass-panel" style="--delay: 0.5s">
+                    <div class="card-icon disease"><i class="fa-solid fa-bug"></i></div>
+                    <h3>Pests & Diseases</h3>
+                    <p id="res-diseases">Loading...</p>
+                </div>
+
+                <div class="care-card glass-panel" style="--delay: 0.6s">
+                    <div class="card-icon tips"><i class="fa-solid fa-star"></i></div>
+                    <h3>Pro Tips</h3>
+                    <p id="res-tips">Loading...</p>
+                </div>
+            </div>
+            <div class="text-center mt-2">
+                <button id="reset-btn" class="reset-btn glass-btn"><i class="fa-solid fa-arrow-left"></i> Ask about another plant</button>
+            </div>
+        </section>
+    </main>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
